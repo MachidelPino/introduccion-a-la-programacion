@@ -1,0 +1,119 @@
+Ejercicio 1: 
+A nombresDeUsuarios se le da una RedSocial ([Usuario],[Relacion],[Publicacion]) y devuelve una lista de q contiene solo los nombres de los usuarios.
+Con esa RedSocial se usa la funcion usuarios, esto para q queden solos los Usuarios(Una lista de (id,nombre)) de la RedSocial
+Con esa nueva lista solo de Usuarios se usa la funcion proyectarNombres, para q de la lista de Usuarios te de una lista con solo los nombres, sin el id
+Y sacarRepetidosDeLista lo q hace es chequear los nombres, si hay algun nombre repetido, deja solo un nombre de esos en la lista. Esto lo hace
+
+Ejercicio 2: 
+A amigosDe se la da una RedSocial ([Usuario], [Relacion], [Publicacion]) y un Usuario (id,nombre) y devuelve una lista de Usuarios. Estos Usuarios son los amigos del Usuario dado para amigosDe.
+La RedSocial y el Usuario dado se usan para la funcion listarAmigosDe, esto para q queden solo una lista con los Usuarios relacionados con el Usuario dado.
+listarAmigosDe toma una lista de de Relacion ([Usuario, Usuario]) y un Usuario, el Usuario es el mismo dado en amigosDe. La lista de Relacion la saca de la RedSocial usada en amigosDe y aplicandole la funcion relaciones a esa RedSocial.
+La funcion relaciones lo q hace es imprimir las relaciones de la RedSocial dada.
+Entonces, con la lista de Relacion y el usuario dado, listarAmigosDe lo q hace es q si el primer Usuario de la Relacion es igual al usuario dado, en este caso agrega a la lista q va a imprimir el segundo Usuario de la Relacion.
+En el caso q el segundo Usuario de la Relacion sea igual al Usuario dado, agrega el primer Usuario a la lista q va a imprimir.
+En cualq otro caso, o sea, q el Usuario dado no este en la Relacion, vuelve a implementar la funcion con otra Relacion.
+Asi, con la lista de Usuarios q se relacionan con el Usuario dado, amigosDe imprime esa lista de Usuarios q se relacionan con el Usuario dado.
+
+Ejercicio 3:
+A cantidadDeAmigos se le da una RedSocial ([Usuario], [Relacion], [Publicacion]) y un Usuario, para asi devolver un numero entero q representa la cantidad de relaciones q tiene ese Usuario.
+Para eso se usa la funcion amigosDe, utilizada en el ejercicio anterior. 
+Se usa amigosDe con la RedSocial y el Usuario dados. Asi queda una lista de Usuarios q se relacionan con el Usuario dado.
+Y con esa lista se usa la funcion contarAmigos, q simplemente lo q hace es sumar uno por cada Usuario de la lista.
+Asi se obtiene el numero entero final q representa la cantidad de relaciones q tiene el Usuario dado en la RedSocial dada.
+
+Ejercicio 4:
+A usuarioConMasAmigos se le da una RedSocial para q devuelva el usuario con mas relaciones de la RedSocial dada.
+Esto lo hace gracias a otra funcion q es compararAmistades.
+Primero, en el caso q no haya ningun Usuario en la RedSocial y q no haya ninguna Relacion en la RedSocial (o q una sola de las dos no se cumpla), la funcion usuarioConMasAmigos devuelve (0,"Nadie").
+En el caso q si hayan Usuarios en la RedSocial y q si hayan Relaciones en la RedSocial, en ese caso se usa la funcion compararAmistades.
+A compararAmistades se le da una RedSocial, una lista de Usuarios y un Usuario, y devuelve un Usuario.
+La RedSocial es la misma dada para usuarioConMasAmigos.
+La lista de Usuarios es el tail de toda la lista de todos los usuarios de la RedSocial (Es decir, una lista con todos los Usuarios de la RedSocial menos el primero).
+Y el Usuario es el head de la lista de todos los usuarios de la RedSocial (Es decir, solo el primer Usuario de la lista con todos los Usuarios de la RedSocial).
+El Usuario q devuelve es el q mas relaciones tiene.
+Para esto, compararAmistades usa la funcion cantidadDeAmigos, asi compara la cantidad de relaciones q tiene cada Usuario, y va guardando el q mas tiene hasta q otro lo supere o se termine la lista, y ahi define cual es el Usuario con mas Relaciones.
+
+Ejercicio 5:
+A estaRobertoCarlos se le da una RedSocial y devuelve True o False.
+Esto lo hace con la funcion cantidadDeAmigos y con la funcion usuarioConMasAmigos.
+Primero obtiene el Usuario con mas Relaciones de la RedSocial dada.
+Y con la RedSocial dada y con el Usuario obtenido por usuarioConMasAmigos, se puede usar la funcion cantidadDeAmigos, q devuelve un numero entero.
+Y ahi se compara el numero entero obtenido con 10, en el caso q la cantidad de Relaciones sea mayor a 10 devuelve True, si es menor a 10 devuelve False.
+
+Ejercicio 6:
+A publicacionesDe se le da una RedSocial y un Usuario, para asi poder devolver una lista de publicaciones.
+Para esto publicacionesDe, hace uso de la funcion listarPublicacionesDe.
+A listarPublicacionesDe se le da un Usuario y una lista de Publicaciones, para devolver una lista de publicaciones.
+El Usuario es el mismo dado para publicacionesDe.
+Y la lista de publicaciones se obtiene por la funciones publicaciones, dandole la RedSocial dada, y asi devuelve la lista de todas las publicaciones de la RedSocial.
+Entonces lo q hace listarPublicacionesDe es chequear si hay alguna publicacion del Usuario dado en la lista de todas las publicaciones de la RedSocial, una por una.
+En el caso q no sea una publicacion del Usuario, sigue chequeando las demas publicaciones.
+En el caso q si sea una publicacion del Usuario, la agrega a la lista q va a devolver al final.
+
+Ejercicio 7:
+A publicacionesQueLeGustanA se le da una RedSocial y un Usuario, para devolver una lista de Publicaciones.
+Para hacer eso hace uso de la funcion listarPublicacionesGustadasPor y de la funcion publicaciones.
+Con la funcion publicaciones lo q hace es obtener una lista de todas las publicaciones de la RedSocial dada.
+A listarPublicacionesGustadasPor se le da un Usuario y una lista de publicaciones, para devolver una lista de publicaicones.
+El Usuario es el dado en publicacionesQueLeGustanA y la lista de publicaciones es la q se obtiene con la funcion publicaciones.
+Para q listarPublicacionesGustadasPor devuelva la lista de publicaicones deseada hace uso de la funcion likesDePublicaciones y de la funcion pertenece.
+A likesDePublicaciones se le da una publicacion, en este caso una publicacion de la lista de todas las publicaciones, y devuelve una lista con todos los Usuarios q le dieron like a esa publicacion.
+A pertenece se le da un Usuario y la lista de Usuarios q le dieron like a una publicacion, y en el caso q el Usuario este en esa lista, es decir, q le haya dado like a la publicacion, se agrega esa publicacion a la lista resultante y se vuelve a realizar el proceso con las demas publicaciones.
+Si el Usuario no se encuentra entre los Usuarios q le dieron like a esa publicacion, la publicacion no se agrega a la lista y se vuelve a realizar el proceso con las demas publicaciones.
+Y asi se devuelve una lista con todas las publicaciones las cuales el Usuario le dio like.
+
+Ejercicio 8:
+A lesGustanLasMismasPublicaciones se le da una RedSocial, un Usuario y otro Usuario, para devolver True o False.
+Para esto hace uso de la funcion mismosElementos y de la funcion publicacionesQueLeGustanA.
+La funcion publicacionesQueLeGustanA devuelve una lista de publicaciones q le gustan a un Usuario dado. Eso se hace para los dos Usuarios dados. Obteniendo dos listas de publicaciones.
+La funcion mismosElementos usa las dos listas de publicaciones obtenidas con publicacionesQueLeGustanA (cada lista correspondiente a su Usuario correspondiente), para devolver True o False.
+Para poder devolver un Bool, la funcion mismosElementos hace uso de la funcion esSubconjunto.
+A la funcion esSubconjunto se le dan dos listas, y hace uso de la funcion pertenece para poder devolver un Bool.
+Ahi lo q hace es q si el head de la primer lista pertenece a la segunda lista y el tail de la primer lista es subconjunto de la segunda lista, devuelve True.
+Entonces, si eso se cumple quiere decir q la primer lista es subconjunto de la segunda.
+En la funcion mismosElementos se requiere q las dos listas sean subconjunto de la otra para q devuelva True, es decir, q sean iguales.
+En el caso q las dos listas son iguales, lesGustanLasMismasPublicaciones devuelve True.
+En el caso q las dos listas no sean iguales, es decir q mismosElementos devuele False, lesGustanLasMismasPublicaciones devuelve False.
+
+Ejercicio 9:
+A tieneUnSeguidorFiel se le da una RedSocial y un Usuario, para devolver un Bool.
+Para hacer eso hace uso de la funcion buscarSeguidorFielAlUsuario y de la funcion usuarios.
+La funcion usuarios agarra la RedSocial dada y devuelve una lista de todos los Usuarios de la RedSocial.
+A buscarSeguidorFielAlUsuario se le da un Usuario, una RedSocial y una lista de Usuarios, para devolver un Bool.
+El Usuario es el mismo dado q en tieneUnSeguidorFiel.
+La RedSocial es la misma dada en tieneUnSeguidorFiel.
+La lista de usuarios es la lista de todos los usuarios de la RedSocial.
+La funcion buscarSeguidorFielAlUsuario hace uso de las funciones esSubconjunto, publicacionesDe y publicacionesQueLeGustanA.
+La funcion publicacionesDe usa la RedSocial dada y el Usuario dado, asi obtiene una lista con todas las publicaciones de ese Usuario en esa RedSocial.
+La funcion publicacionesQueLeGustanA usa la RedSocial dada y el head de la lista de Usuario obtenida por la funcion Usuarios.
+Entonces, en el caso q el head de la lista de Usuarios sea distinto al Usuario dado y q la lista de publicaciones obtenida por publicacionesDe (lista de todas las publicaciones del Usuario dado en la RedSocial dada) pertenece a la lista obtenida por publicacionesQueLeGustanA (lista de publicaciones de la RedSocial dada q le gustan al head de la lista de Usuarios).
+Si esas dos cosas se cumplen, buscarSeguidorFielAlUsuario devuelve True, ya q es cierto q las publicaciones del Usuario dado son un subconjunto de las publicaciones likeadas por el head de la lista de Usuarios.
+En el caso q alguna de estas no se cumplan, se sigue intentando con los demas Usuarios de la lista de Usuarios. 
+En el caso q no exista ningun Usuario q le haya dado like a todas las publicaciones del Usuario dado devuelve False.
+
+Ejercicio 10:
+A existeSecuenciaDeAmigos se le da una RedSocial, un Usuario y otro Usuario, para devolver un Bool.
+Lo logra haciendo uso de las funciones cadenaDeAmigos, secuenciaEntreDosElementos y usuarios.
+La funcion usuarios devuelve una lista con todos los Usuarios de la RedSocial dada.
+A la funcion secuenciaEntreDosElementos se le da los dos Usuarios dados para existeSecuenciaDeAmigos y usa la lista de todos los Usuarios de la funcion usuarios. Devuelve una lista de de Usuarios.
+La funcion secuenciaEntreDosElementos hace uso de las funciones empiezaCon, terminaCon y quitarUltimoElemento.
+A la funcion empiezaCon se le da, en este caso, el Usuario 1 y la lista de todos los Usuarios de la RedSocial. Para devolver un Bool.
+Devuelve True si el head de la lista de Usuarios es igual al Usuario 1. Si no son iguales devuelve False.
+A la funcion terminaCon se le da, en este caso, el Usuario 2 y la lista de todos los Usuarios de la RedSocial. Para devolver un Bool.
+Devuelve True cuando el Usuario 2 es el head de la lista de Usuarios. Va eliminando elementos hasta q pase eso.
+A la funcion quitarUltimoElemento se le da la lista de Usuarios y devuelve la misma lista sin el ultimo elemento.
+Volviendo a la funcion secuenciaEntreDosElementos.
+En el caso q se cumpla q la lista empieza con el Usuario 1 y termina con el Usuario 2, se devuelve la misma lista, ya q la misma lista es una secuencia de amigos entre el Usuario 1 y el Usuario 2.
+En el caso q la lista empiece con el Usuario 1, pero no termine con el Usuario 2 se vuelve a aplicar la funcion solo q con la lista q devuelve quitarUltimoElemento, es decir, con la misma lista de Usuarios solo q sin el ultimo elemento.
+En cualq otro caso se aplica otra vez la funcion solo q con el tail de la lista de los Usuarios, ya q en estos casos el Usuario 1 no es el q empieza la lista de Usuarios.
+Una vez q se tiene la lista con el Usuario 1 como head y el Usuario 2 como ultimo Usuario de la lista, se aplica cadenaDeAmigos.
+A cadenaDeAmigos se le da la lista de Usuarios resultante y la RedSocial, para devolver un Bool.
+Esta funcion hace uso de otra funcion, relacionadosDirecto.
+A relacionadosDirecto se le da una lista de Usuarios y una RedSocial, y devuelve un Bool.
+En el caso q el tail de la lista de Usuarios sea vacia devuelve True.
+En el caso q el primer Usuario de la lista se relacione con el segundo Usuario de la lista o al reves, aplica otra vez la funcion sin el head de la lista.
+En cualq otro caso devuelve False.
+Volviendo a cadenaDeAmigos, en el caso q la longitud de la lista de Usuarios sea mayor a dos usa la funcion relacionadosDirecto.
+En cualq otro caso devuelve False.
+Volviendo a existeSecuenciaDeAmigos, para q devuelva True, relacionadosDirecto tiene q devolver True, asi cadenaDeAmigos devuelve True y asi existeCadenaDeAmigos devuelve True.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
